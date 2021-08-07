@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 from django.db import models
 from django.db.models import Q
 from django.urls import reverse
@@ -37,7 +38,18 @@ class NewsPost(models.Model):
 
     @property
     def teaser(self):
-        return self.body[:150]
+        """
+         teaser implements the BeautifulSoup library to parse through the
+         entire body of text to look for <a> tags and removes it.
+
+         :param self: NewsPost
+         :return: parsed NewsPost.body string of 150 characters
+         """
+        parsed_teaser = BeautifulSoup(self.body, features='html.parser')
+        for a in parsed_teaser.findAll('a'):
+            a.replaceWithChildren()
+        parsed_teaser = str(parsed_teaser)
+        return parsed_teaser[:150]
 
     @property
     def source_divesite(self):
