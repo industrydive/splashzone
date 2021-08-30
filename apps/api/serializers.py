@@ -1,16 +1,18 @@
+from django.contrib.sites.models import Site
+
 from rest_framework import serializers
 
 from news.models import NewsPost
-from taxonomy.models import Topic, DiveSite
+from taxonomy.models import Topic
 
 
 class DiveSiteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = DiveSite
+        model = Site
         fields = [
             'pk',
-            'display_name',
-            'url_name',
+            'name',
+            'domain',
             'full_url',
         ]
 

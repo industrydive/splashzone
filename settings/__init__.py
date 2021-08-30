@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
     'advertising',
     'api',
@@ -125,4 +126,6 @@ FIXTURE_DIRS = [os.path.join(BASE_DIR, 'fixtures'), ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-USER_TYPE = 'SEI'
+SITE_ID = 999
+
+SITEMODEL_ENABLED = True

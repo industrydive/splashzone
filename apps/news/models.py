@@ -3,7 +3,8 @@ from django.db.models import Q
 from django.urls import reverse
 from django.utils import timezone
 
-from taxonomy.models import DiveSite, Topic
+from taxonomy.models import Topic
+from lib.sitestuff import SiteModel
 
 
 DIVESITE_SOURCE_NAMES = {
@@ -18,13 +19,12 @@ DIVESITE_SOURCE_NAMES = {
 }
 
 
-class NewsPost(models.Model):
+class NewsPost(SiteModel):
     title = models.CharField(max_length=300)
     body = models.TextField(max_length=3000)
     source = models.URLField()
     is_cover_story = models.BooleanField(default=False)
     publish_date = models.DateField(default=timezone.now)
-    divesite = models.ForeignKey(DiveSite, null=True, on_delete=models.SET_NULL)
     topics = models.ManyToManyField(Topic)
     active = models.BooleanField(default=True)
 
