@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 beautifulsoup4 = "==4.8.2"
 djangorestframework = "*"
+bs4 = "*"
 
 [dev-packages]
 

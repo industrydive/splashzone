@@ -1,3 +1,5 @@
+from bs4 import BeautifulSoup
+
 from django.db import models
 from django.db.models import Q
 from django.urls import reverse
@@ -29,7 +31,7 @@ class NewsPost(SiteModel):
     active = models.BooleanField(default=True)
 
     def __str__(self):
-        return '<{}> {}'.format(self.divesite.url_name, self.title)
+        return '<{}> {}'.format(self.site.domain, self.title)
 
     @property
     def url(self):
@@ -37,7 +39,8 @@ class NewsPost(SiteModel):
 
     @property
     def teaser(self):
-        return self.body[:150]
+        body_html = BeautifulSoup(self.body, 'html')
+        return body_html.text[:150]
 
     @property
     def source_divesite(self):
