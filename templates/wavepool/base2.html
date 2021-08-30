@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+	<head>
+  		<link href="{% static 'css/divesite-styles.css' %}" rel="stylesheet">
+  		<link href="{% static 'css/splashzone.css' %}" rel="stylesheet">
+  		<title>Wavepool | Industry Dive</title>
+  		<link rel="shortcut icon" type="/image/png" href="{% static 'favicon.ico' %}"/>
+  		{% block extra_style %}{% endblock %}
+  </head>
+  <body>
+		<div class="page-container">
+			<header role="banner">
+				<nav id="top" class="site-menu">
+					<div class="site-menu-inner">
+						<div class="pub-logo-wrapper">
+						  <a class="t-dash-navigation" href="{% url 'home' %}">
+						  	<img src="{% static 'image/splashzonelogo.png' %}" class="pub-logo" />
+						  </a>
+						</div>
+						<div class="menu-content-wrapper" id="navbarSupportedContent">
+							<ul class="desktop-menu-main">
+								<li>
+								  <a href="{% url 'home' %}">
+								  	{{site.name}}
+								  </a>
+								</li>
+								<li>
+									<a href="{% url 'instructions' %}">Instructions</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<div id="page_content" class="page-wrapper">
+				<div class="page-inner-wrapper">
+					{% block page_content %}{% endblock %}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

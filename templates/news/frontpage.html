@@ -1,4 +1,4 @@
-{% extends 'wavepool/base.html' %}
+{% extends 'wavepool/base2.html' %}
 {% load static %}
 
 {% block extra_style %}
@@ -6,42 +6,68 @@
 {% endblock %}
 
 {% block page_content %}
-	<div class="row">
-		<div class="col-md-4">
-			<div id="coverstory" class="row" data-newspost-id="{{cover_story.pk}}">
-				<h2>Cover story</h2>
-				<div class="row">
-					<ul class="feed feed--callout">
-						<li data-newspost-id="{{cover_story.pk}}" data-top-story-placement="{{forloop.counter}}">
-							<span class="label label--loud">
-								{{cover_story.publish_date}}
-							</span>
-							<div class="feed-link">
-								<a href="{{ cover_story.url }}">{{ cover_story.title }}</a>
-							</div>
-							<img src="{% static 'image/placeholder-img.jpg' %}"  width="300" height="175" />
-							<div class="feed-teaser" data-story_id="{{cover_story.pk}}">
-								{{ cover_story.teaser|safe  }} ...
-							</div>
+	<section class="dash-top">
+		<div class="row">
+			<div class="large-12 medium-10 medium-centered columns">
+				<div class="large-6 columns">
+					<section class="hero-article">
+						<figure class="hero-article__container">
+							<a href="{{ cover_story.url }}">
+								<img src="{% static 'image/placeholder-img.jpg' %}"  class="t-dash-hero-img" />
+							</a>
+							<h1><a href="{{ cover_story.url }}">{{ cover_story.title }}</a></h1>
+							<p class="hero-article__teaser">{{ cover_story.teaser|safe  }}</p>
+							<a class="call-out-link analytics t-dash-hero-readmore nowrap" href="{{ cover_story.url }}">Read more
+	                            <span class="call-out-link__arrow">➔</span>
+	                        </a>
+						</figure>
+					</section>
+				</div>
+				<div id="topstories" class="large-6 columns">
+					<secton class="top-stories">
+					<h2 class="dash-header">Top Stories</h2>
+					<ol>
+						{% for story in top_stories %}
+						<li>
+							<h3><a href="{{story.url}}">{{story.title}}</a></h3>
 						</li>
-					</ul>
+						{% endfor %}
+					</ol>
+					</secton>
 				</div>
 			</div>
 		</div>
-		<div id="topstories" class="col-md-8">
-			<div class="row"><h2>Top Stories</h2></div>
-			<div class="row">
-				{% include 'news/includes/news_feed.html' with feed=top_stories feed_id="top_stories" format="basic" %}
-			</div>
-		</div>
-	</div>
-	<div class="row"><h2>Feed</h2></div>
-	<div id="archive" class="row">
-		{% include 'news/includes/news_feed.html' with feed=recent_stories feed_id="recent_stories" format="basic" %}
-	</div>
-	<div class="row pagenav">
-		<div class="pagenav-link">
-			<a href="{% url 'newspost_archive' %}">Archive >></a>
+	</section>
+	<div class="row">
+		<div class="medium-10 medium-centered large-12">
+			<section id="main-content" class="main-content large-8 columns">
+				<section class="dash-feed"> 
+            		<h2 class="dash-header hide-small show-large">The Latest</h2>
+            		<ul class="feed layout-stack-xxl">
+            			{% for story in recent_stories %}
+            			<li class="row feed__item">
+            				<div class="medium-4 columns">
+            					<figure class="feed__image-container">
+                                    <a class="feed__image" href="{{story.url}}">
+                                    	<img src="{% static 'image/placeholder-img.jpg' %}" alt="" width="275" height="130">
+                                    </a>
+                                </figure>
+            				</div>
+            				<div class="medium-8 columns">
+            					<h3 class="feed__title feed__title--display">
+                                	<a href="{{story.url}}">{{story.title}}
+                                </a>
+                            	</h3>
+                            	<p class="feed__description">{{story.teaser}}</p>
+            				</div>
+            			</li>
+            			{% endfor %}
+            		</ul>
+        		</section>
+			</section>
+			<aside class="sidebar large-4 columns">
+				{% include 'news/includes/sidebar.html' %}
+			</aside>
 		</div>
 	</div>
 {% endblock %}

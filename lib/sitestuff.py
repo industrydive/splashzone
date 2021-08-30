@@ -6,6 +6,9 @@ from django.urls import reverse
 from django.utils.html import format_html
 
 
+def current_site():
+    return Site.objects.get(pk=settings.SITE_ID)
+
 def getSiteManager():  # noqa
     # note first object manager is the default
     if not settings.SITE_ID or settings.SITE_ID == 999:
