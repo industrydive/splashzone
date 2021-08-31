@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.template import loader
 from django.http import HttpResponse
 
@@ -49,11 +48,9 @@ def archive(request):
     context = {
         'news_archive': news_archive,
         'topics': topics,
-        'text_search': request.GET.get('text_search'),
+        'text_search_value': text_search_value,
         'selected_topics': selected_topics,
         'searched': selected_topics or text_search_value,
-        'selected_topics': selected_topics,
-        'text_search_value': text_search_value,
     }
 
     return HttpResponse(template.render(context, request))
