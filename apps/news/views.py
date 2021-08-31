@@ -1,7 +1,6 @@
 from django.template import loader
 from django.http import HttpResponse
 
-from advertising import get_ad
 from news.models import NewsPost
 from news.helpers import parse_search_terms
 from taxonomy.models import Topic
@@ -35,7 +34,6 @@ def newspost_detail(request, newspost_id):
     newspost = NewsPost.objects.get(pk=newspost_id)
     context = {
         'newspost': newspost,
-        'ad': get_ad()
     }
     return HttpResponse(template.render(context, request))
 

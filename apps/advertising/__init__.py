@@ -15,7 +15,7 @@ ADS = [
     },
     {
         'company_name': 'Cyberdyne Systems',
-        'copy': "it's not self aware, yet!",
+        'copy': "it's not self aware... yet!",
         'logo': 'cyberdyne.jpeg',
         'url': 'https://www.logolynx.com/topic/fake+company',
     },

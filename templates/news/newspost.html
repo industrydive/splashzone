@@ -5,27 +5,29 @@
 <div class="row">
     <div class="medium-10 medium-centered large-12">
         <section id="main-content" class="main-content large-8 columns">
-            <article>
-                <div class="article-title-wrapper">
-                    <h1 class="display-heading-04">
-                        {{ newspost.title }}
-                    </h1>
-                    <p> {{newspost.teaser }}</p>
-                    <div class="byline">
-                        <div class="date date-bottom-border">
-                            <div class="published-info">
-                                Published {{ newspost.publish_date }}
+            <article class>
+                <div class="first-page-pdf">
+                    <div class="article-title-wrapper">
+                        <h1 class="display-heading-04">
+                            {{ newspost.title }}
+                        </h1>
+                        <p> {{newspost.teaser }}</p>
+                        <div class="byline">
+                            <div class="date date-bottom-border">
+                                <div class="published-info">
+                                    Published {{ newspost.publish_date }}
+                                </div>
                             </div>
+                            <div class="byline-row"></div>
                         </div>
-                        <div class="byline-row"></div>
                     </div>
-                </div>
 
-                <figure class="inside_story">
-                    <div class="figure_content article-hero-img">
-                        <img itemprop="image" alt="" src="{% static newspost|story_image %}" width="770" height="364">
-                    </div>
-                </figure>
+                    <figure class="inside_story">
+                        <div class="figure_content article-hero-img">
+                            <img itemprop="image" alt="" src="{% static newspost|story_image %}" width="770" height="364">
+                        </div>
+                    </figure>
+                </div>
                 <div class="article-large-12 columns article-wrapper">
                     <div class="print-wrapper">
                         <div class="large medium article-body">
@@ -48,4 +50,8 @@
         </aside>
     </div>
 </div>
+{% endblock %}
+
+{% block pre_footer %}
+
 {% endblock %}

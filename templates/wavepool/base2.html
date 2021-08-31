@@ -2,14 +2,16 @@
 <html>
 	<head>
   		<link href="{% static 'css/divesite-styles.css' %}" rel="stylesheet">
+  		<link href="{% static 'css/print.css' %}" rel="stylesheet">
   		<link href="{% static 'css/splashzone.css' %}" rel="stylesheet">
   		<title>Wavepool | Industry Dive</title>
   		<link rel="shortcut icon" type="/image/png" href="{% static 'favicon.ico' %}"/>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   		{% block extra_style %}{% endblock %}
   </head>
-  <body class="dash flush-top">
+  <body class="">
 		<div class="page-container">
-			<header role="banner">
+			<header role="banner" {% if spoonser %}class="spoonsered"{% endif %}>
 				<nav id="top" class="site-menu">
 					<div class="site-menu-inner">
 						<div class="pub-logo-wrapper">
@@ -32,6 +34,7 @@
 					</div>
 				</nav>
 			</header>
+			{% if show_topics %}
 			<nav class="topics menu-bar js-menu-bar-transition" style="position: absolute; left: 0px;">
                 <ul class="list-no-bullets">
                     <li>
@@ -39,11 +42,16 @@
                     </li>
                 </ul>
             </nav>
+            {% endif %}
 			<div id="page_content" class="page-wrapper">
 				<div class="page-inner-wrapper">
 					{% block page_content %}{% endblock %}
 				</div>
-				{% include 'wavepool/includes/footer.html' %}
+					<section class="pre-footer">			
+					{% block pre_footer %} {% endblock %}
+					{% include 'wavepool/includes/signup.html' %}
+					</section>
+					<hr class="footer-hr">
 			</div>
 		</div>
 	</body>
