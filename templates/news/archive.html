@@ -9,9 +9,13 @@
 					<h1 class="feed-header__title">
 						{% if searched %}Search Results{% else %}Archive{% endif %}
 					</h1>
+					
             		<hr class="feed-header__divider">
         		</section>
 				<section class="dash-feed"> 
+					{% if searched %}
+						<p class="help-text">Displaying results for "{{text_search_value}}"</p>
+					{% endif %}
 					{% include 'news/includes/news_feed.html' with feed=news_archive %}
 				</section>
 			</section>
