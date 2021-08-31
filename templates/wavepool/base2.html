@@ -7,7 +7,7 @@
   		<link rel="shortcut icon" type="/image/png" href="{% static 'favicon.ico' %}"/>
   		{% block extra_style %}{% endblock %}
   </head>
-  <body>
+  <body class="dash flush-top">
 		<div class="page-container">
 			<header role="banner">
 				<nav id="top" class="site-menu">
@@ -32,10 +32,18 @@
 					</div>
 				</nav>
 			</header>
+			<nav class="topics menu-bar js-menu-bar-transition" style="position: absolute; left: 0px;">
+                <ul class="list-no-bullets">
+                    <li>
+                        <a href="">Topics...</a>
+                    </li>
+                </ul>
+            </nav>
 			<div id="page_content" class="page-wrapper">
 				<div class="page-inner-wrapper">
 					{% block page_content %}{% endblock %}
 				</div>
+				{% include 'wavepool/includes/footer.html' %}
 			</div>
 		</div>
 	</body>

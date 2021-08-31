@@ -1,5 +1,5 @@
 {% extends 'wavepool/base2.html' %}
-{% load static %}
+{% load static helper_tags %}
 
 {% block extra_style %}
 	<link href="{% static 'css/news.css' %}" rel="stylesheet">
@@ -13,7 +13,7 @@
 					<section class="hero-article">
 						<figure class="hero-article__container">
 							<a href="{{ cover_story.url }}">
-								<img src="{% static 'image/placeholder-img.jpg' %}"  class="t-dash-hero-img" />
+								<img src="{% static cover_story|story_image %}"  class="t-dash-hero-img" />
 							</a>
 							<h1><a href="{{ cover_story.url }}">{{ cover_story.title }}</a></h1>
 							<p class="hero-article__teaser">{{ cover_story.teaser|safe  }}</p>
@@ -49,7 +49,7 @@
             				<div class="medium-4 columns">
             					<figure class="feed__image-container">
                                     <a class="feed__image" href="{{story.url}}">
-                                    	<img src="{% static 'image/placeholder-img.jpg' %}" alt="" width="275" height="130">
+                                    	<img src="{% static story|story_image %}" alt="" width="275" height="130">
                                     </a>
                                 </figure>
             				</div>
@@ -66,7 +66,7 @@
         		</section>
 			</section>
 			<aside class="sidebar large-4 columns">
-				{% include 'news/includes/sidebar.html' %}
+				{% include 'wavepool/includes/sidebar.html' %}
 			</aside>
 		</div>
 	</div>
