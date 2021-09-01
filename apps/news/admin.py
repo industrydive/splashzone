@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+
 from news.models import NewsPost
 
 
@@ -21,6 +22,5 @@ class NewsPostAdmin(admin.ModelAdmin):
     list_display = ['title', 'site', 'is_cover_story', 'active']
     list_editable = ['is_cover_story', 'active']
     readonly_fields = ['site', ]
-
 
 admin.site.register(NewsPost, NewsPostAdmin)

@@ -5,9 +5,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
+from lib.sitestuff import current_site
 from news import views as news_views
 from wavepool import views as wavepool_views
 from api import views as api_views
+
+
+admin.site.site_header = "{} Admin".format(current_site().name)
+admin.site.site_title = "{} Admin Portal".format(current_site().name)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

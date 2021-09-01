@@ -22,6 +22,7 @@ prompts = [
             'Understand many-to-many relationships in the Django ORM',
             'Understand how to create composite unique keys in Django',
             'Understand how SiteModel effects admin page interactions',
+            'Understand how to customize an admin form save method to catch database constraint errors'
         ],
         'scenarios': [
             {
@@ -30,6 +31,9 @@ prompts = [
                     'Given I am a Dive Site Editor and I am signed in to the divesite admin',
                     'When I am on the admin home page',
                     'Then a link to "What We Are Reading" is listed under "NEWS"',
+                ],
+                'images': [
+                    ('wwar/wwar-admin-home.png', 'Admin home page with WWAR section under News App')
                 ]
             },
             {
@@ -50,6 +54,9 @@ prompts = [
                         </tr>
                     </table>
                     '''
+                ],
+                'images': [
+                    ('wwar/wwar-new.png', 'Example admin create page')
                 ]
             },
             {
@@ -67,6 +74,9 @@ prompts = [
                     ''',
                     'And I press "save"',
                     'Then I see a success message'
+                ],
+                'images': [
+                    ('wwar/wwar-save-success.png', 'Successful WWAR save')
                 ]
             },
             {
@@ -97,7 +107,12 @@ prompts = [
                     </table>
                     ''',
                     'And I press save',
-                    'Then I see a unique constraint error message',
+                    'Then I see a form vaidation error message',
+                ],
+                'images': [
+                    ('wwar/wwar-form-error.png', 'Custom validation error on create page'),
+                    ('wwar/wwar-uncaught-error.png',
+                        'Replace this uncaught validation error page, which is the default behavior'),
                 ]
             },
             {
@@ -132,7 +147,7 @@ prompts = [
                 ]
             },
             {
-                'title': 'An inline form is added to the News Post edit page in the admin',
+                'title': 'Admin user can add up to 3 WWAR Links to a News Post from the News Post detail form page',
                 'steps': [
                     'Given I am a Dive Site Editor and I am signed in to the divesite admin',
                     'When I go to a newspost detail edit page',
@@ -140,6 +155,22 @@ prompts = [
                     'Then I see a "What we are reading" inline form',
                     'And I can select existing WWAR links to add to this News Post',
                     'And I can remove WWAR links from this News Post',
+                ],
+                'images': [
+                    ('wwar/wwar-inline-1.png',
+                        'Example stacked inline form, which can associate WWAR Links to NewsPosts'),
+                ]
+            },
+            {
+                'title': 'Admin user <strong>cannot add more than 3</strong> WWAR Links to a News Post from the News Post detail form page',  # noqa
+                'steps': [
+                    'Given I am a Dive Site Editor and I am on a News Post detail admon page',
+                    'When I add 3 WWAR Links to the News Post',
+                    'Then the "Add another" button is hidden'
+                ],
+                'images': [
+                    ('wwar/wwar-inline-maxed.png',
+                        'Note that the "add another..." button no longer shows when the max of 3 instances has been reached')  # noqa
                 ]
             }
         ]
@@ -157,7 +188,8 @@ prompts = [
             'The title of each feed item should be the title of the WWAR link and link to the URL',
             'Links should open in a new tab',
             'The secondary label for each item should be "<source name> • <pub month> <pub day>, <pub year>',
-            'The layout should match the attached screenshot mockups'
+            'The layout should match the attached screenshot mockups',
+            'The new content should be in the "pre footer" section of the page'
         ],
         'objectives': [
             'Understand how to create a feed using Snorkel',
@@ -218,6 +250,12 @@ prompts = [
                         </table>
                     ''',
                 ],
+                'images': [
+                    ('wwar/wwar-mockup.png',
+                        'Example mockup'),
+                    ('wwar/wwar-mockup-close.png',
+                        'Close up')
+                ],
             },
             {
                 'title': 'WWAR section is hidden when there are no WWAR links for a given News Post',
@@ -226,14 +264,179 @@ prompts = [
                     'And there are no WWAR links saved for News Post ZZZ',
                     'When I am on the News Post ZZZ detail page',
                     'Then the WWAR section is hidden'
-                ]
+                ],
+                'images': [
+                    ('wwar/wwar-nolinks.png', ''),
+                ],
             },
         ]
     },
     {
-        'title': 'Add a related Dive News Posts sidebar',
+        'title': 'Add Related Dives functionality to admin',
+        'AC': [
+            'A new model exists in the Taxonomy app which allows admin users to associate Dive Sites to eachother',
+            'A given Dive Site cannot be added to the same site more than once'
+        ],
+        'objectives': [
+            'Understand how to create new models in Django',
+            'Understand many-to-many relationships in the Django ORM',
+            'Understand how to create composite unique keys in Django',
+            'Understand how SiteModel effects admin page interactions',
+            'Understand how to customize an admin form save method to catch database constraint errors',
+        ],
+        'description': '''
+            In order to begin associating editorial content across different Dive Sites,
+            as a Dive Site Editor, I want to be able to link Dives that are closely related
+            to eachother (e.g., Restaraunt Dive and Retail Dive may be closely related to Supply Chain Dive).
+        ''',
+        'scenarios': [
+            {
+                'title': '',
+                'steps': [],
+                'images': []
+            }
+        ]
     },
     {
-        'title': 'Add a search form to archive page',
+        'title': 'Set up related Dive Sites for Editorial Team',
+        'AC': [
+            'A custom migration is created that links the following divesites to eachother:',
+            '''
+            <table>
+                <tr>
+                    <th>Site</th>
+                    <th>Related sites</th>
+                </tr>
+                <tr>
+                    <td>Retail Dive</td>
+                    <td>
+                        Supply Chain Dive
+                    </td>
+                </tr>
+                <tr>
+                    <td>Restaraunt Dive</td>
+                    <td>
+                        Supply Chain Dive<br />
+                        Grocery Dive<br />
+                        Food Dive
+                    </td>
+                </tr>
+                <tr>
+                    <td>Grocery Dive</td>
+                    <td>
+                        Supply Chain Dive<br />
+                        Restaraunt Dive<br />
+                        Food Dive
+                    </td>
+                </tr>
+                <tr>
+                    <td>Supply Chain Dive</td>
+                    <td>
+                        Retail Dive
+                    </td>
+                </tr>
+            </table>
+            ''',
+            'This migration can be run forward and backward. If reversed, it should remove all Related Dive instances'
+        ],
+        'objectives': [
+            'Understand how to create custom migrations in Django that are backward and forward compatible',
+        ],
+        'description': '''
+            In order to make sure that the correct related dive sites are linked together, as a Dive Site Editor, I
+            want the engineering team to pre-populate the existing related Dive Sites.
+        ''',
     },
+    {
+        'title': 'Add a related Dive News Posts sidebar',
+        'AC': [
+            'Any page that includes a sidebar should have a "Related Content" box',
+            'The related content box should contain 4 News Posts from related Dive Sites in a random order',
+            'The first related post should be a "Feed item with image"',
+            'The last 3 posts should be "Editorial feed item"',
+            'The related posts should be set via a context processor so that they are available to any page',
+            'If there are no Related Dive Sites OR fewer than 5 News Posts across related Dive Sites, the "Related Content" box should be hidden',  # noqa
+            'The "Related Content" box should match the mocks and use HTML and CSS found in Snorkel',
+            'The "Related Content" box should appear below the signup sidebar box',
+            'The label for each feed item should be the name of the Dive Site it comes from'
+
+        ],
+        'objectives': [
+            'Understand how to access Site object data across Sites',
+            'Understand how to work with custom context processors',
+            'Understand how to build a sidebar box using Snorkel'
+        ],
+        'description': '''
+            In order to get information related content I am reading on a given Dive Site, as
+            a Dive Site Reader, I want to see news posts from other Dive Sites that are related
+            to the one I am currently on.
+        ''',
+        'scenarios': [
+            {
+                'title': 'Display news posts from related Dive Sites in sidebar when there are at least 5 available related News Posts',  # noqa
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And 5 News Posts exist on related Dives',
+                    'When I am on the Front Page',
+                    'Then the "Related Content" is visible',
+                    'And the "Related Content" contains 4 stories',
+                ],
+                'images': []
+            },
+            {
+                'title': 'Hide "Related Content" sidebar box when there are no related Dive Sites',
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And Retail Dive has no related Dives',
+                    'When I am on the Front Page',
+                    'Then the "Related Content" is hidden',
+                ],
+                'images': []
+            },
+            {
+                'title': 'Hide "Related Content" sidebar box when there are less than 5 related Dive Site News Posts',
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And 4 News Posts exist on related Dives',
+                    'When I am on the Front Page',
+                    'Then the "Related Content" is hidden',
+                ],
+                'images': [
+                    ('related-posts/related-posts-placement.png',
+                        'Example mockup in correct placement'),
+                    ('related-posts/related-posts-full.png',
+                        'Full mockup of box')
+                ],
+            }
+        ]
+    },
+    # {
+    #     'title': 'Add a search form to archive page',
+    #     'AC': [],
+    #     'objectives': [],
+    #     'description': '''
+    #     ''',
+    #     'scenarios': [
+    #         {
+    #             'title': '',
+    #             'steps': [],
+    #             'images': []
+    #         }
+    #     ]
+    # },
 ]
+
+"""
+    'title': '',
+    'AC': [],
+    'objectives': [],
+    'description': '''
+    ''',
+    'scenarios': [
+        {
+            'title': '',
+            'steps': [],
+            'images': []
+        }
+    ]
+"""

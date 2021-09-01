@@ -1,3 +1,7 @@
+$dive-gray-2: #E9ECEF;
+$dive-blue: #288BD2;
+$dive-red: #D62828;
+
 .page-inner-wrapper {
     margin-top: 50px;
 }
@@ -31,7 +35,7 @@
         top: 30%;
         background-color: #ffffff;
         padding: 6px;
-        border: #288BD2 1px solid;
+        border: $dive-blue 1px solid;
         &_image {
             width: 100%;
             img {
@@ -51,13 +55,23 @@
     margin-top: -80px;
     .prompts {
         margin-top: 33px;
+        table {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid $dive-gray-2;
+            th, td {
+                text-align: left;
+                padding: 5px 20px 5px 5px;
+                border: 1px solid $dive-gray-2;
+            }
+        }
         &-list {
             list-style-type: none;
             padding: 0;
             margin: 0;
             &_prompt {
                 margin-top: 25px;
-                border: 1px solid #E9ECEF;
+                border: 1px solid $dive-gray-2;
                 padding: 10px;
             }
         }
@@ -76,18 +90,25 @@
                 li {
                     margin-bottom: 1px;
                     margin-left: 10px;
-                    table {
-                        margin-top: 5px;
-                        margin-bottom: 5px;
-                        border: 1px solid #E9ECEF;
-                        th, td {
-                            text-align: left;
-                            padding: 5px 20px 5px 5px;
-                            border: 1px solid #E9ECEF;
-                        }
-                    }
                 }
             }
+        }
+        .screenshot {
+            width: 100%;
+            &-image {
+                border: 1px solid $dive-gray-2;
+                width: 66%;
+                margin: 0 auto;
+            }
+            &-text {
+                width: 66%;
+                margin: 0 auto;
+                text-align: center;
+                font-style: italic;
+                font-weight: bold;
+                color: $dive-red;
+            }
+            margin-bottom: 25px;
         }
     }
     h2 {
@@ -97,7 +118,7 @@
     }
     h3 {
         font-size: 1rem;
-        color: #D62828;
+        color: $dive-red;
         text-transform: uppercase;
     }
 }

@@ -68,10 +68,13 @@
 							<h3>Acceptance Criteria</h3>
 							<ol>
 							{% for ac in prompt.AC %} 
-								<li>{{ac}}</li>
+								{% with ac|gherkinize_step as ac_html %}
+									<li>{{ac_html|safe}}</li>
+								{% endwith %}
 							{% endfor %}
 							</ol>
 						</div>
+						{% if prompt.scenarios %}
 						<div class="scenarios">
 							<h3>Scenarios</h3>
 							{% for scenario in prompt.scenarios %} 
@@ -87,8 +90,19 @@
 									</ul>
 								</li>
 							</ul>
+								{% for source, desc in scenario.images %}
+								<div class="screenshot">
+									<div class="screenshot-image">
+										<img src='{% static "image/ac_screenshots/" %}{{source}}' />
+									</div>
+									<div class="screenshot-text">
+										{{desc}}
+									</div>
+								</div>
+								{% endfor %}
 							{% endfor %}
 						</div>
+						{% endif %}
 					</li>
 					{% endfor %}
 				</ul>

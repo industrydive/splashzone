@@ -9,18 +9,6 @@ from taxonomy.models import Topic
 from lib.sitestuff import SiteModel
 
 
-DIVESITE_SOURCE_NAMES = {
-    'retaildive': 'Retail Dive',
-    'ciodive': 'CIO Dive',
-    'educationdive': 'Education Dive',
-    'supplychaindive': 'Supply Chain Dive',
-    'restaurantdive': 'Restaurant Dive',
-    'grocerydive': 'Grocery Dive',
-    'biopharmadive': 'BioPharma Dive',
-    'hrdive': 'HR Dive',
-}
-
-
 class NewsPost(SiteModel):
     title = models.CharField(max_length=300)
     body = models.TextField(max_length=3000)

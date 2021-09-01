@@ -53,6 +53,16 @@
 #instructions .prompts {
   margin-top: 33px;
 }
+#instructions .prompts table {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #E9ECEF;
+}
+#instructions .prompts table th, #instructions .prompts table td {
+  text-align: left;
+  padding: 5px 20px 5px 5px;
+  border: 1px solid #E9ECEF;
+}
 #instructions .prompts-list {
   list-style-type: none;
   padding: 0;
@@ -77,15 +87,22 @@
   margin-bottom: 1px;
   margin-left: 10px;
 }
-#instructions .prompts .scenarios ul li table {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border: 1px solid #E9ECEF;
+#instructions .prompts .screenshot {
+  width: 100%;
+  margin-bottom: 25px;
 }
-#instructions .prompts .scenarios ul li table th, #instructions .prompts .scenarios ul li table td {
-  text-align: left;
-  padding: 5px 20px 5px 5px;
+#instructions .prompts .screenshot-image {
   border: 1px solid #E9ECEF;
+  width: 66%;
+  margin: 0 auto;
+}
+#instructions .prompts .screenshot-text {
+  width: 66%;
+  margin: 0 auto;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  color: #D62828;
 }
 #instructions h2 {
   font-size: 1.3rem;
