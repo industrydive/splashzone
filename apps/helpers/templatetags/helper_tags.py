@@ -29,7 +29,7 @@ def story_image(story):
         :param story: technically any object that has a 'pk' property, but a News Post is expected
         :type story: Object
 
-        :return: Path to image file matching the objet's pk OR a default image path matching image doesn't exist
+        :return: Path to image file matching the objet's pk OR a default image path if matching image doesn't exist
         :rtype: String
     """
     if story:
@@ -43,7 +43,7 @@ def story_image(story):
 def gherkinize_step(step):
     """Returns HTML that pretifies a string if it looks like a Gherkin step or a table
 
-        :param step: a
+        :param step: a string meant to be a step in a prompt scenatrio
         :type step: String
 
         :return: A formatted HTML string if the provided 'step' string starts with a
