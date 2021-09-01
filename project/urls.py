@@ -17,6 +17,8 @@ admin.site.site_title = "{} Admin Portal".format(current_site().name)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', news_views.front_page, name='home'),
+    path('signup/', wavepool_views.Signup.as_view(), name='signup'),
+    path('thankyou/', wavepool_views.Signup.as_view(), name='thankyou'),
     path('news/<int:newspost_id>/', news_views.newspost_detail, name='newspost_detail'),
     path('news/archive/', news_views.archive, name='newspost_archive'),
     path('instructions/', wavepool_views.instructions, name='instructions'),

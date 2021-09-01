@@ -9,6 +9,7 @@ def site_processor(request):
     return {
         'site': this_site,
         'show_topics': True,
+        'show_footer_signup': True,
     }
 
 
