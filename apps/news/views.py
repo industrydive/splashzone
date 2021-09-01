@@ -11,7 +11,7 @@ def front_page(request):
         Returns all available newsposts, formatted like:
             cover_story: the newsposts with is_cover_story = True
             top_stories: the 3 most recent newsposts that are not cover story
-            archive: the rest of the newsposts, sorted by most recent
+            recent_stories: the rest of the newsposts, sorted by most recent
     """
     template = loader.get_template('news/frontpage.html')
     cover_story = NewsPost.objects.filter(is_cover_story=True).first()
@@ -30,6 +30,8 @@ def front_page(request):
 
 
 def newspost_detail(request, newspost_id):
+    """Detail page for a given News Post instance
+    """
     template = loader.get_template('news/newspost.html')
     newspost = NewsPost.objects.get(pk=newspost_id)
     context = {
@@ -39,6 +41,16 @@ def newspost_detail(request, newspost_id):
 
 
 def archive(request):
+    """List of all News Posts or list of News Posts that match a search query
+
+        Search query examples:
+            ?text_search=Autonomous+Vehicles
+            Returns stories with "Autonomous Vehicles" in the title or body
+
+            ?text_search=Autonomous+Vehicles&topics_1=4&topics_2=7
+            Returns stories with "Autonomous Vehicles" in the title or body AND topics in Topic with PK 4 or 7
+
+    """
     template = loader.get_template('news/archive.html')
     topics = Topic.objects.all().order_by('display_name')
     selected_topics, text_search_value = parse_search_terms(request.GET)

@@ -6,6 +6,8 @@ from wavepool.onboarding_exercise_defs import prompts
 
 
 def instructions(request):
+    """Displays all onboarding prompts and instructions
+    """
     template = loader.get_template('instructions2.html')
 
     context = {
@@ -18,6 +20,8 @@ def instructions(request):
 
 
 class Signup(View):
+    """Dummy class for signup thank you page
+    """
     def setup(self, request, *args, **kwargs):
         super(Signup, self).setup(request, *args, **kwargs)
         self.template = loader.get_template('thankyou.html')

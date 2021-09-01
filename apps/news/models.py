@@ -34,13 +34,18 @@ class NewsPost(SiteModel):
     def source_divesite(self):
         return self.divesite.display_name
 
-    def tags(self):
-        return [
-            'HR', 'Diversity & Inclusion', 'Culture'
-        ]
-
     @classmethod
     def search(cls, topics=None, text_value=None):
+        """Filters News Posts that match provided topics or text_value
+
+            :param topics: QuerySet or List of Topic objects to filter against
+            :type topics: QuerySet or List
+            :param text_value: Search term to filter title or body against
+            :type text_value: String
+
+            :return: News Posts that match provided search terms
+            :rtype: Queryset
+        """
         results = cls.objects
         if topics:
             results = results.filter(topics__in=topics)

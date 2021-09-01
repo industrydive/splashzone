@@ -1,3 +1,5 @@
+"""Defines dummy ads for display on Splashzone pages
+"""
 import random
 
 ADS = [
@@ -35,4 +37,5 @@ ADS = [
 
 
 def get_ad():
+    """Returns a random Ad from ADS """
     return random.choice(ADS)
