@@ -2,6 +2,10 @@ $dive-gray-2: #E9ECEF;
 $dive-blue: #288BD2;
 $dive-red: #D62828;
 
+code {
+   color: $dive-red; 
+}
+
 .page-inner-wrapper {
     margin-top: 50px;
 }
