@@ -1,6 +1,6 @@
-{% extends 'wavepool/base2.html' %}
+{% extends 'base2.html' %}
 {% load static helper_tags %}
-
+{% block page_title %}{{ newspost.title }}{% endblock %}
 {% block page_content %}
 <div class="row">
     <div class="medium-10 medium-centered large-12">
