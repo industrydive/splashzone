@@ -6,7 +6,7 @@ Industry Dive's onboarding tool for new software engineers
 * Pipenv or other python virtual environment package
 
 ## Install
-Using pipenv:
+Using (pipenv)[https://pipenv.pypa.io/en/latest/]:
 
 Install an environment using python 3
 
