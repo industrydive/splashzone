@@ -16,6 +16,10 @@ code {
 
 .site-alert__message {
     padding-left: 20px;
+    a {
+        font-weight: bold;
+        color: $dive-blue;
+    }
 }
 
 #dfp-leaderboard-desktop {

@@ -13,6 +13,10 @@ code {
 .site-alert__message {
   padding-left: 20px;
 }
+.site-alert__message a {
+  font-weight: bold;
+  color: #288BD2;
+}
 
 #dfp-leaderboard-desktop {
   background-image: url(../image/components/slash.png);
