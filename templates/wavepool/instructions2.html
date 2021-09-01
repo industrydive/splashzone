@@ -1,5 +1,5 @@
 {% extends 'wavepool/base2.html' %}
-{% load static %}
+{% load static helper_tags %}
 
 {% block page_content %}
 <div class="row" id="instructions">
@@ -64,26 +64,28 @@
 							<h3>Description</h3>
 							<p>{{prompt.description}}</p>
 						</div>
+						<div class="objectives">
+							<h3>Acceptance Criteria</h3>
+							<ol>
+							{% for ac in prompt.AC %} 
+								<li>{{ac}}</li>
+							{% endfor %}
+							</ol>
+						</div>
 						<div class="scenarios">
 							<h3>Scenarios</h3>
 							{% for scenario in prompt.scenarios %} 
 							<ul>
 								<li>
-									{{forloop.counter}}. {{scenario.title}}
+									{{forloop.counter}}. {{scenario.title|safe}}
 									<ul>  
 										{% for step in scenario.steps %}	
-										<li>{{step|safe}}</li>
+										{% with step|gherkinize_step as step_html %}
+											<li>{{step_html|safe}}</li>
+										{% endwith %}
 										{% endfor %}
 									</ul>
 								</li>
-							</ul>
-							{% endfor %}
-						</div>
-						<div>
-							<h3>Acceptance Criteria</h3>
-							{% for ac in prompt.AC %} 
-							<ul>
-								<li>{{ac}}</li>
 							</ul>
 							{% endfor %}
 						</div>

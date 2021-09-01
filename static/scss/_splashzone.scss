@@ -64,9 +64,9 @@
         .objectives {
             ul {
                 list-style-type: disc;
-                li {
-                    margin-bottom: 0;
-                }
+            }
+            li {
+                margin-bottom: 0;
             }
         }
         .scenarios {         
@@ -74,8 +74,18 @@
                 margin-top: 5px;
                 list-style-type: none;
                 li {
-                    margin-bottom: 0;
+                    margin-bottom: 1px;
                     margin-left: 10px;
+                    table {
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        border: 1px solid #E9ECEF;
+                        th, td {
+                            text-align: left;
+                            padding: 5px 20px 5px 5px;
+                            border: 1px solid #E9ECEF;
+                        }
+                    }
                 }
             }
         }
