@@ -15,11 +15,22 @@ code {
 }
 
 .site-alert__message {
-    padding-left: 20px;
+    padding: 0px 20px;
     a {
         font-weight: bold;
         color: $dive-blue;
     }
+    &--inverse {
+        a {
+            font-weight: bold;
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+    }
+}
+
+.pagination_instructions {
+    margin-top: 20px;
 }
 
 #dfp-leaderboard-desktop {
@@ -59,10 +70,26 @@ code {
     }
 }
 
+a.page-anchor {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 #instructions {
     margin-top: -80px;
     .prompts {
         margin-top: 33px;
+        &-links {
+            a {
+                text-decoration: none;
+                font-weight: bold;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
         table {
             margin-top: 5px;
             margin-bottom: 5px;

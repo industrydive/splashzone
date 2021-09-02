@@ -8,6 +8,7 @@ django = "*"
 beautifulsoup4 = "==4.8.2"
 djangorestframework = "*"
 bs4 = "*"
+django-summernote = "*"
 
 [dev-packages]
 

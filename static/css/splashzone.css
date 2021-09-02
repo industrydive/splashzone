@@ -11,11 +11,20 @@ code {
 }
 
 .site-alert__message {
-  padding-left: 20px;
+  padding: 0px 20px;
 }
 .site-alert__message a {
   font-weight: bold;
   color: #288BD2;
+}
+.site-alert__message--inverse a {
+  font-weight: bold;
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.pagination_instructions {
+  margin-top: 20px;
 }
 
 #dfp-leaderboard-desktop {
@@ -55,11 +64,25 @@ code {
   font-style: italic;
 }
 
+a.page-anchor {
+  text-decoration: none;
+}
+a.page-anchor:hover {
+  text-decoration: underline;
+}
+
 #instructions {
   margin-top: -80px;
 }
 #instructions .prompts {
   margin-top: 33px;
+}
+#instructions .prompts-links a {
+  text-decoration: none;
+  font-weight: bold;
+}
+#instructions .prompts-links a:hover {
+  text-decoration: underline;
 }
 #instructions .prompts table {
   margin-top: 5px;

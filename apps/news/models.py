@@ -5,17 +5,15 @@ from django.db.models import Q
 from django.urls import reverse
 from django.utils import timezone
 
-from taxonomy.models import Topic
 from lib.sitestuff import SiteModel
 
 
 class NewsPost(SiteModel):
     title = models.CharField(max_length=300)
-    body = models.TextField(max_length=3000)
+    body = models.TextField(max_length=6000)
     source = models.URLField()
     is_cover_story = models.BooleanField(default=False)
     publish_date = models.DateField(default=timezone.now)
-    topics = models.ManyToManyField(Topic)
     active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -28,11 +26,12 @@ class NewsPost(SiteModel):
     @property
     def teaser(self):
         body_html = BeautifulSoup(self.body, 'html')
-        return body_html.text[:150]
+        body_html = body_html.text.replace('Dive Brief:', '')
+        return body_html[:150]
 
     @property
     def source_divesite(self):
-        return self.divesite.display_name
+        return self.site.name
 
     @classmethod
     def search(cls, topics=None, text_value=None):

@@ -291,9 +291,36 @@ prompts = [
         ''',
         'scenarios': [
             {
-                'title': '',
-                'steps': [],
-                'images': []
+                'title': 'Related Dives can be accessed from the Admin page',
+                'steps': [
+                    'Given I am a Dive Site Editor',
+                    'And I am logged in to the Admin',
+                    'Then a link to "Related Dives" is under the "Taxonomy" header'
+                ],
+            },
+            {
+                'title': 'Editor can add a Related Dive',
+                'steps': [
+                    'Given I am a Dive Site Editor',
+                    'And I am logged in to the Retail Dive Admin',
+                    'And I am on the add Related Dives page',
+                    'When I select "Supply Chain Dive" for "Related Dive"',
+                    'And I press "save"',
+                    'Then I see a confirmation message'
+                ],
+            },
+            {
+                'title': 'Editor can not add the same Related Dive more than once',
+                'steps': [
+                    'Given I am a Dive Site Editor',
+                    'And a Related Dive instance for "Supply Chain Dive" exists',
+                    'And I am logged in to the Retail Dive Admin',
+                    'And I am on the add Related Dives page',
+                    'When I select "Supply Chain Dive" for "Related Dive"',
+                    'And I press "save"',
+                    'Then I see an error message',
+                    'And the Create page is re-loaded'
+                ],
             }
         ]
     },
@@ -348,17 +375,15 @@ prompts = [
         ''',
     },
     {
-        'title': 'Add a related Dive News Posts sidebar',
+        'title': 'Add a "Related Coverage" sidebar box',
         'AC': [
-            'Any page that includes a sidebar should have a "Related Content" box',
-            'The related content box should contain 4 News Posts from related Dive Sites in a random order',
-            'The first related post should be a "Feed item with image"',
-            'The last 3 posts should be "Editorial feed item"',
+            'Any page that includes a sidebar should have a "Related Coverage" box',
+            'The related coverage box should contain 5 News Posts from related Dive Sites in a random order',
+            'The first related post should include its image',
             'The related posts should be set via a context processor so that they are available to any page',
-            'If there are no Related Dive Sites OR fewer than 5 News Posts across related Dive Sites, the "Related Content" box should be hidden',  # noqa
-            'The "Related Content" box should match the mocks and use HTML and CSS found in Snorkel',
-            'The "Related Content" box should appear below the signup sidebar box',
-            'The label for each feed item should be the name of the Dive Site it comes from'
+            'If there are no Related Dive Sites OR fewer than 5 News Posts across related Dive Sites, the "Related Coverage" box should be hidden',  # noqa
+            'The "Related Coverage" box should match the mocks and use HTML and CSS found in Snorkel',
+            'The "Related Coverage" box should appear below the signup sidebar box',
 
         ],
         'objectives': [
@@ -378,32 +403,34 @@ prompts = [
                     'Given I am a Retail Dive Reader',
                     'And 5 News Posts exist on related Dives',
                     'When I am on the Front Page',
-                    'Then the "Related Content" is visible',
-                    'And the "Related Content" contains 4 stories',
+                    'Then the "Related Coverage" is visible',
+                    'And the "Related Coverage" contains 4 stories',
                 ],
                 'images': []
             },
             {
-                'title': 'Hide "Related Content" sidebar box when there are no related Dive Sites',
+                'title': 'Hide "Related Coverage" sidebar box when there are no related Dive Sites',
                 'steps': [
                     'Given I am a Retail Dive Reader',
                     'And Retail Dive has no related Dives',
                     'When I am on the Front Page',
-                    'Then the "Related Content" is hidden',
+                    'Then the "Related Coverage" is hidden',
                 ],
                 'images': []
             },
             {
-                'title': 'Hide "Related Content" sidebar box when there are less than 5 related Dive Site News Posts',
+                'title': 'Hide "Related Coverage" sidebar box when there are less than 5 related Dive Site News Posts',
                 'steps': [
                     'Given I am a Retail Dive Reader',
                     'And 4 News Posts exist on related Dives',
                     'When I am on the Front Page',
-                    'Then the "Related Content" is hidden',
+                    'Then the "Related Coverage" is hidden',
                 ],
                 'images': [
-                    ('related-posts/related-posts-placement.png',
-                        'Example mockup in correct placement'),
+                    ('related-posts/related-posts-placement-archive.png',
+                        'Example mockup in correct placement on archive page'),
+                    ('related-posts/related-posts-placement-story.png',
+                        'Example mockup in correct placement on news post page'),
                     ('related-posts/related-posts-full.png',
                         'Full mockup of box')
                 ],

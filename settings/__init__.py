@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_summernote',
     'rest_framework',
     'advertising',
     'api',
@@ -131,3 +132,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 SITE_ID = 999
 
 SITEMODEL_ENABLED = True
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8000',
+]
+CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'iframe': False,
+        'toolbar': [
+            ['font', ['bold', 'underline', 'clear', 'italic']],
+            ['para', ['ul', 'ol']],
+            ['insert', ['link', ]],
+            ['table', ['table']],
+            ['style', ['style']],
+            ['view', ['codeview', ]],
+        ],
+        'styleTags': [
+            'p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+        ],
+    }
+}

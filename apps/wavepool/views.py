@@ -6,12 +6,27 @@ from wavepool.onboarding_exercise_defs import prompts
 
 
 def instructions(request):
-    """Displays all onboarding prompts and instructions
+    """Displays onboarding instructions
     """
     template = loader.get_template('instructions2.html')
 
     context = {
         'prompts': prompts,
+        'spoonser': None,
+        'show_topics': False,
+        'show_footer_signup': False,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def prompts_view(request, prompt_id):
+    """Displays all onboarding prompts
+    """
+    template = loader.get_template('prompt.html')
+    selected_prompt = prompts[prompt_id - 1]
+
+    context = {
+        'prompt': selected_prompt,
         'spoonser': None,
         'show_topics': False,
         'show_footer_signup': False,

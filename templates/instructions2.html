@@ -25,6 +25,7 @@
 				</ul>
 				<p>Once your manager has reviewed your pull request, they will you provide you with feedback and request any changes or ask for clarification as needed.</p>
 				<div class="site-alert">
+				<div class="site-alert">
 				    <div class="row">
 				        <div class="columns">
 				            <div class="site-alert__message">
@@ -48,6 +49,7 @@
 				            </div>
 				        </div>
 				    </div>
+				</div>	
 				</div>
     		</section>
 			<section class="prompts">
@@ -60,66 +62,29 @@
 				</ul>
 			</section>
 			<section class="prompts">
-				<h1 class="feed-header__title">Prompts</h1>
-				<ul class="prompts-list">
-					{% for prompt in prompts %}
-					<li class="prompts-list_prompt">
-						<h2>{{prompt.title}}</h2>
-						<div class="objectives">
-							<h3>Objectives</h3>
-							<ul>
-								{% for obj in prompt.objectives %} 
-								<li>{{obj}}</li>
-								{% endfor %}
-							</ul>
-						</div>
-						<div class="description">
-							<h3>Description</h3>
-							<p>{{prompt.description}}</p>
-						</div>
-						<div class="objectives">
-							<h3>Acceptance Criteria</h3>
-							<ol>
-							{% for ac in prompt.AC %} 
-								{% with ac|gherkinize_step as ac_html %}
-									<li>{{ac_html|safe}}</li>
-								{% endwith %}
-							{% endfor %}
-							</ol>
-						</div>
-						{% if prompt.scenarios %}
-						<div class="scenarios">
-							<h3>Scenarios</h3>
-							{% for scenario in prompt.scenarios %} 
-							<ul>
-								<li>
-									{{forloop.counter}}. {{scenario.title|safe}}
-									<ul>  
-										{% for step in scenario.steps %}	
-										{% with step|gherkinize_step as step_html %}
-											<li>{{step_html|safe}}</li>
-										{% endwith %}
-										{% endfor %}
-									</ul>
-								</li>
-							</ul>
-								{% for source, desc in scenario.images %}
-								<div class="screenshot">
-									<div class="screenshot-image">
-										<img src='{% static "image/ac_screenshots/" %}{{source}}' />
-									</div>
-									<div class="screenshot-text">
-										{{desc}}
-									</div>
-								</div>
-								{% endfor %}
-							{% endfor %}
-						</div>
-						{% endif %}
-					</li>
-					{% endfor %}
-				</ul>
+				<div class="site-alert site-alert--loud">
+				    <div class="row">
+				        <div class="columns">
+				            <div class="site-alert__message site-alert__message--inverse">
+				            	NOTE: you would normally receive Figma mocks for front-end tickets. For the purposes of these exercises, you will just get screenshots of examples. It is a good idea, however, to familiarize yourself with Figma using this <a href="https://industrydive.atlassian.net/wiki/spaces/TECH/pages/1446936948/Figma+101+for+Engineers" target="_blank">Figma 101 for Engineers</a> page. <a href="https://www.figma.com/file/jmRHFRhYAEtKw3JaSrgXXa/Sidebar-Boxes?node-id=224%3A650" target="_blank">Here is a great example</a> of a Figma mock that is relevant to these prompts.
+				            </div>
+				        </div>
+				    </div>
+				</div>
 			</section>
+			<section class="prompts prompts-links">
+				<h2 class="feed-header__title">Prompts</h2>
+					<ol>
+						{% for prompt in prompts %}
+							<li>
+								<a href="{% url 'prompts' prompt_id=forloop.counter %}">
+									{{prompt.title}} &#8594;
+								</a>
+							</li>
+						{% endfor %}
+					</ol>
+        	</section>
+
 		</section>
 	</div>
 </div> 
