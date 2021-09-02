@@ -68,6 +68,14 @@
 					</li>
 				</ul>
 			</section>
+			<section class="prompts">
+				{% if previous_prompt %}
+				<a style="float: left" href="{% url 'prompts' prompt_id=previous_prompt %}">&#8592; Previous Prompt</a>
+				{% endif %}
+				{% if next_prompt %}
+				<a style="float: right" href="{% url 'prompts' prompt_id=next_prompt %}">Next Prompt &#8594;</a>
+				{% endif %}
+			</section>
 		</section>
 	</div>
 </div> 

@@ -25,8 +25,20 @@ def prompts_view(request, prompt_id):
     template = loader.get_template('prompt.html')
     selected_prompt = prompts[prompt_id - 1]
 
+    if prompt_id < len(prompts):
+        next_prompt = prompt_id + 1
+    else:
+        next_prompt = None
+
+    if prompt_id > 1:
+        previous_prompt = prompt_id - 1
+    else:
+        previous_prompt = None
+
     context = {
         'prompt': selected_prompt,
+        'next_prompt': next_prompt,
+        'previous_prompt': previous_prompt,
         'spoonser': None,
         'show_topics': False,
         'show_footer_signup': False,

@@ -6,7 +6,7 @@ prompts = [
             I want to be able to add links to relevant sources which would appear at the end of newsposts.
             Editors should be able to add up to 3 "What we are reading" (WWAR) links per News Post. Some
             WWAR links will likely be used by more than one News Post, but they should be only available to
-            the dive site on which they were created. Duplicates WWAR links on a given dive site should be prevented.
+            the dive site on which they were created. Duplicate WWAR links on a given dive site should be prevented.
         ''',
         'AC': [
             'A new model and subsequent migration exist in the news app which will store WWAR links',
@@ -164,7 +164,7 @@ prompts = [
             {
                 'title': 'Admin user <strong>cannot add more than 3</strong> WWAR Links to a News Post from the News Post detail form page',  # noqa
                 'steps': [
-                    'Given I am a Dive Site Editor and I am on a News Post detail admon page',
+                    'Given I am a Dive Site Editor and I am on a News Post detail admin page',
                     'When I add 3 WWAR Links to the News Post',
                     'Then the "Add another" button is hidden'
                 ],
