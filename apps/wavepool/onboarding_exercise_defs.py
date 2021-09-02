@@ -337,7 +337,8 @@ prompts = [
                 <tr>
                     <td>Retail Dive</td>
                     <td>
-                        Supply Chain Dive
+                        Supply Chain Dive<br />
+                        Grocery Dive
                     </td>
                 </tr>
                 <tr>
@@ -345,7 +346,6 @@ prompts = [
                     <td>
                         Supply Chain Dive<br />
                         Grocery Dive<br />
-                        Food Dive
                     </td>
                 </tr>
                 <tr>
@@ -353,13 +353,14 @@ prompts = [
                     <td>
                         Supply Chain Dive<br />
                         Restaraunt Dive<br />
-                        Food Dive
                     </td>
                 </tr>
                 <tr>
                     <td>Supply Chain Dive</td>
                     <td>
-                        Retail Dive
+                        Retail Dive<br />
+                        Grocery Dive<br />
+                        Restaraunt Dive
                     </td>
                 </tr>
             </table>
