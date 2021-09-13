@@ -10,9 +10,22 @@
 					<h1 class="feed-header__title">
 						{% if searched %}Search Results{% else %}Archive{% endif %}
 					</h1>
-					
             		<hr class="feed-header__divider">
-        		</section>
+				</section>
+				<section id="search-form" class="archive-search">
+					<form method="GET" action="">
+					<div class="search-input">
+						<img class="search-input__icon" src="{% static '/image/components/input-search.svg' %}" alt="search">
+					    <img class="search-input__clear" src="{% static '/image/components/clear.svg' %}" alt="clear">
+						<label for="search">Search:</label>
+						<input type="search" name="search" value="{{text_search_value}}" placeholder="Search the archive..." id="id_search">
+					</div>
+					<div>
+						<input type="submit" class="button button--medium" value="search" />
+						<p class="help-text">Please type at least 3 characters to search</p>
+					</div>
+					</form>
+				</section>
 				<section class="dash-feed"> 
 					{% if searched %}
 						<p class="help-text">Displaying results for "{{text_search_value}}"</p>

@@ -5,6 +5,8 @@ from django.db.models import Q
 from django.urls import reverse
 from django.utils import timezone
 
+from taxonomy.models import Topic
+
 from lib.sitestuff import SiteModel
 
 
@@ -15,6 +17,7 @@ class NewsPost(SiteModel):
     is_cover_story = models.BooleanField(default=False)
     publish_date = models.DateField(default=timezone.now)
     active = models.BooleanField(default=True)
+    topics = models.ManyToManyField(Topic)
 
     def __str__(self):
         return '<{}> {}'.format(self.site.domain, self.title)
@@ -28,6 +31,10 @@ class NewsPost(SiteModel):
         body_html = BeautifulSoup(self.body, 'html')
         body_html = body_html.text.replace('Dive Brief:', '')
         return body_html[:150]
+
+    @property
+    def has_topics(self):
+        return self.topics.count() > 0
 
     @property
     def source_divesite(self):

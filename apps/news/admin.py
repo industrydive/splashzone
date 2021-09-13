@@ -21,7 +21,7 @@ class NewsPostForm(forms.ModelForm):
 
 class NewsPostAdmin(SummernoteModelAdmin):
     form = NewsPostForm
-    list_display = ['title', 'site', 'is_cover_story', 'active']
+    list_display = ['title', 'site', 'is_cover_story', 'active', 'has_topics']
     list_editable = ['is_cover_story', 'active']
     readonly_fields = ['site', ]
     summernote_fields = ['body', ]

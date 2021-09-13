@@ -1,7 +1,9 @@
 from django.db import models
 
+from lib.sitestuff import SiteModel
 
-class Topic(models.Model):
+
+class Topic(SiteModel):
     display_name = models.CharField(max_length=50)
     internal_name = models.CharField(max_length=50, unique=True)
 

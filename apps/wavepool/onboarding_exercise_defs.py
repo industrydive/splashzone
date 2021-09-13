@@ -438,20 +438,92 @@ prompts = [
             }
         ]
     },
-    # {
-    #     'title': 'Add a search form to archive page',
-    #     'AC': [],
-    #     'objectives': [],
-    #     'description': '''
-    #     ''',
-    #     'scenarios': [
-    #         {
-    #             'title': '',
-    #             'steps': [],
-    #             'images': []
-    #         }
-    #     ]
-    # },
+    {
+        'title': 'Make the archive search respond like a single page app',
+        'AC': [
+            '''
+            Once a user has input 3 or more chatacters in the text search field,
+            the list of news articles should refresh. Results should include any article on the
+            current Dive Site which matches the text either in the title or the body.
+            ''',
+            '''
+            The URL should be updated any time the search results refresh so that the search query is
+            "?search=whatever+search+text". This is so that users can bookmark or directly share a search via URL.
+            ''',
+            '''
+            The help text "Please type at least 3 characters to search" should only be visible once the user starts
+            typing and should disappear once they have typed 3 characters
+            ''',
+            '''
+            Clicking the "x" in the search field resets the page
+            ''',
+        ],
+        'objectives': [
+            'Demonstrate ability to use JS/front end style guide',
+            'Demonstrate ability to implement a front-end framework like JQuery or React'
+        ],
+        'description': '''
+            As a Dive Site Reader, in order to find easily articles that I should read,
+            I want the search form on the archive page to immediately respond to my searched text.
+        ''',
+        'scenarios': [
+            {
+                'title': 'A search is not executed when a user has typed fewer than 3 characters',
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And I am on the archive page',
+                    'When I type "wa" in the search box',
+                    'Then the help text is visible',
+                    'And the listed newsposts does not change'
+                ],
+                'images': []
+            },
+            {
+                'title': 'A user gets search results from a text search of 3 characters',
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And I am on the archive page',
+                    'When I type "wal" in the search box',
+                    'Then all listed news posts contain "Walmart" or "Walgreens"',
+                    'And the URL is "[host]/news/archive/?search=wal"'
+                ],
+                'images': []
+            },
+            {
+                'title': 'The archive page executes a search on page load when the search query is present in the URL',
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And I go to the URL "[host]/news/archive/?search=wal"',
+                    'Then the value of the search field is "wal"'
+                    'And all listed news posts contain "Walmart" or "Walgreens"',
+                ],
+                'images': []
+            },
+            {
+                'title': 'The listed news posts refresh when a User changes the search text',
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And I am at the URL "[host]/news/archive/?search=wal"',
+                    'When I add "mart" to the search text',
+                    'Then all listed news posts contain "Walmart"',
+                    'And the URL is "[host]/news/archive/?search=walmart"'
+                ],
+                'images': []
+            },
+            {
+                'title': 'User can reset the page by clicking the "x" in the search field',
+                'steps': [
+                    'Given I am a Retail Dive Reader',
+                    'And I am at the URL "[host]/news/archive/?search=walmart"',
+                    'When I click the reset search button',
+                    'Then the newspost list contains all stories',
+                    'And the default search text is visible',
+                    'And the URL is "[host]/news/archive/"'
+                ],
+                'images': []
+            },
+        ]
+    },
 ]
 
 """

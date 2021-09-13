@@ -58,7 +58,7 @@ def archive(request):
     context = {
         'news_archive': news_archive,
         'topics': topics,
-        'text_search_value': text_search_value,
+        'text_search_value': text_search_value or '',
         'selected_topics': selected_topics,
         'searched': selected_topics or text_search_value,
     }
