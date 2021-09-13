@@ -464,11 +464,16 @@ prompts = [
             ''',
             '''
             You can use either JQuery or React to solve the prompt (JQuery is recommended)
+            ''',
+            '''
+            A newpost API has been provided for you to perform ajax queries from your javascript, it is located at
+            <code>/api/news/</code> or <code>/api/news/?search=whatever+search+text</code>
             '''
         ],
         'objectives': [
-            'Demonstrate ability to use JS/front end style guide',
-            'Demonstrate ability to implement a front-end framework like JQuery or React'
+            'Understand how to use JS/front end style guide',
+            'Understand how to implement a front-end framework like JQuery or React',
+            'Understand how to handle GET queries in Django Views'
         ],
         'description': '''
             As a Dive Site Reader, in order to find easily articles that I should read,
