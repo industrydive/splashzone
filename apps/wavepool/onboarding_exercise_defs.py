@@ -385,6 +385,11 @@ prompts = [
             'If there are no Related Dive Sites OR fewer than 5 News Posts across related Dive Sites, the "Related Coverage" box should be hidden',  # noqa
             'The "Related Coverage" box should match the mocks and use HTML and CSS found in Snorkel',
             'The "Related Coverage" box should appear below the signup sidebar box',
+            '''
+            You can refer to
+            <a href="https://www.figma.com/file/PU425ikfvPrw1u4yyZsVeq/Splashzone?node-id=0%3A1" target="_blank">
+            this Figma mock</a> for the design system components that you should use.
+            '''
 
         ],
         'objectives': [
@@ -457,6 +462,9 @@ prompts = [
             '''
             Clicking the "x" in the search field resets the page
             ''',
+            '''
+            You can use either JQuery or React to solve the prompt (JQuery is recommended)
+            '''
         ],
         'objectives': [
             'Demonstrate ability to use JS/front end style guide',
