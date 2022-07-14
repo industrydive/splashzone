@@ -1,9 +1,9 @@
-$dive-gray-2: #E9ECEF;
-$dive-blue: #288BD2;
-$dive-red: #D62828;
+$dive-gray-2: #DDDEE6;
+$call-out: #e0002b;
+$dive-blue: blue;
 
 code {
-   color: $dive-red; 
+   color: $call-out; 
 }
 
 .page-inner-wrapper {
@@ -141,7 +141,7 @@ a.page-anchor {
                 text-align: center;
                 font-style: italic;
                 font-weight: bold;
-                color: $dive-red;
+                color: $call-out;
             }
             margin-bottom: 25px;
         }
@@ -153,7 +153,7 @@ a.page-anchor {
     }
     h3 {
         font-size: 1rem;
-        color: $dive-red;
+        color: $call-out;
         text-transform: uppercase;
     }
 }
