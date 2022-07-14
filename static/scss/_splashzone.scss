@@ -78,7 +78,6 @@ a.page-anchor {
 }
 
 #instructions {
-    margin-top: -80px;
     .prompts {
         margin-top: 33px;
         &-links {
@@ -148,8 +147,7 @@ a.page-anchor {
     }
     h2 {
         font-size: 1.3rem;
-        margin-block-start: 0;
-        margin-block-end: 0;
+        margin-bottom: 1rem;
     }
     h3 {
         font-size: 1rem;
