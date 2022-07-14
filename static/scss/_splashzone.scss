@@ -1,6 +1,6 @@
 $dive-gray-2: #DDDEE6;
 $call-out: #e0002b;
-$dive-blue: blue;
+$primary-color: 414192;
 
 code {
    color: $call-out; 
@@ -18,7 +18,7 @@ code {
     padding: 0px 20px;
     a {
         font-weight: bold;
-        color: $dive-blue;
+        color: $primary-color;
     }
     &--inverse {
         a {
@@ -54,7 +54,7 @@ code {
         top: 30%;
         background-color: #ffffff;
         padding: 6px;
-        border: $dive-blue 1px solid;
+        border: $primary-color 1px solid;
         &_image {
             width: 100%;
             img {

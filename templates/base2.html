@@ -5,12 +5,12 @@
   		<link href="{% static 'css/divesite-styles.css' %}" rel="stylesheet">
   		<link href="{% static 'css/print.css' %}" rel="stylesheet">
   		<link href="{% static 'css/splashzone.css' %}" rel="stylesheet">
+  		<link href="{% static 'css/fonts.css' %}" rel="stylesheet">
   		<title>Splashzone | {% block page_title %}Industry Dive{% endblock %}</title>
   		<link rel="shortcut icon" type="/image/png" href="{% static 'favicon.ico' %}"/>
-  		<link rel="stylesheet" href="https://use.typekit.net/xux0lgk.css">
   		{% block extra_style %}{% endblock %}
   </head>
-  <body class="">
+  <body id="splashzone">
 		<div class="page-container">
 			<header role="banner" {% if spoonser %}class="spoonsered"{% endif %}>
 				<nav id="top" class="site-menu">
