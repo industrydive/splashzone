@@ -184,7 +184,6 @@ prompts = [
         'AC': [
             'A new feed section is added to the newspost template which contains the WWAR links associated with a given News Post',  # noqa
             'The title of the section should be "What we\'re reading"',
-            'The sub-title of the section should be "Sources from other publications"',
             'The title of each feed item should be the title of the WWAR link and link to the URL',
             'Links should open in a new tab',
             'The secondary label for each item should be "<source name> • <pub month> <pub day>, <pub year>',
@@ -251,9 +250,9 @@ prompts = [
                     ''',
                 ],
                 'images': [
-                    ('wwar/wwar-mockup.png',
+                    ('wwar/wwar-ui-full.png',
                         'Example mockup'),
-                    ('wwar/wwar-mockup-close.png',
+                    ('wwar/wwar-ui-details.png',
                         'Close up')
                 ],
             },
@@ -266,7 +265,7 @@ prompts = [
                     'Then the WWAR section is hidden'
                 ],
                 'images': [
-                    ('wwar/wwar-nolinks.png', ''),
+                    ('wwar/wwar-ui-none.png', ''),
                 ],
             },
         ]
@@ -433,11 +432,11 @@ prompts = [
                     'Then the "Related Coverage" is hidden',
                 ],
                 'images': [
-                    ('related-posts/related-posts-placement-archive.png',
+                    ('related-posts/related-posts-archive.png',
                         'Example mockup in correct placement on archive page'),
-                    ('related-posts/related-posts-placement-story.png',
+                    ('related-posts/related-posts-story.png',
                         'Example mockup in correct placement on news post page'),
-                    ('related-posts/related-posts-full.png',
+                    ('related-posts/related-posts-detail.png',
                         'Full mockup of box')
                 ],
             }
