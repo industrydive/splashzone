@@ -7,11 +7,15 @@ code {
 .page-wrapper {
   padding-top: 105px; }
 
+.thanks-icon {
+  width: 200px; }
+
 .site-alert__message {
   padding: 0px 20px; }
   .site-alert__message a {
     font-weight: bold;
-    color: 414192; }
+    color: 414192;
+    text-decoration: underline; }
   .site-alert__message--inverse a {
     font-weight: bold;
     color: #FFFFFF;

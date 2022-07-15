@@ -14,11 +14,16 @@ code {
     padding-top: 105px;
 }
 
+.thanks-icon {
+    width: 200px;
+}
+
 .site-alert__message {
     padding: 0px 20px;
     a {
         font-weight: bold;
         color: $primary-color;
+        text-decoration: underline;
     }
     &--inverse {
         a {
